@@ -5,11 +5,8 @@ div
             h2 state
             n-space
                 n-button(type="primary") 按钮
-                n-button(type="primary") 按钮
-                button 我是首页按钮  45544545
+                n-button(type="warning") 按钮
                 h1 {{ state.data }}
-                n-button(type="primary" @click="theme = darkTheme") 切换主题颜色
-            //- n-button(type="primary" @click="store.inc()") {{ store.counter }}
 </template>
 
 <script setup>

@@ -1,7 +1,8 @@
 <template lang="pug">
-div
+n-layout
     Header
-    router-view
+    n-layout-content
+        router-view
     Footer
 </template>
 

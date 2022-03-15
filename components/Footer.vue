@@ -1,5 +1,5 @@
 <template lang="pug">
-n-divider
-h2 我是footer
-    n-button(type="primary") 按钮
+n-layout-footer
+    n-space(justify="center" )
+        n-h4 我是footer
 </template>
