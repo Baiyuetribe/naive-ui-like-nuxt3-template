@@ -1,6 +1,9 @@
 <template lang="pug">
 n-layout-header
     n-h1 我是HEADER
+    n-space
+        router-link(to="/") 首页
+        router-link(to="/home") Home
     n-switch(v-model:value="active" size="medium" @update:value="handleSwitch")
         template(#checked-icon)
             n-icon
@@ -8,11 +11,16 @@ n-layout-header
         template(#unchecked-icon)
             n-icon
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512"><path d="M264 480A232 232 0 0 1 32 248c0-94 54-178.28 137.61-214.67a16 16 0 0 1 21.06 21.06C181.07 76.43 176 104.66 176 136c0 110.28 89.72 200 200 200c31.34 0 59.57-5.07 81.61-14.67a16 16 0 0 1 21.06 21.06C442.28 426 358 480 264 480z" fill="currentColor"></path></svg>
+    //- n-dropdown(:options="languageOptions" @select="handleLanguageSelect")
+    //-     n-button 选择语言
+    n-button(type="primary" ghost @click="changeLanguage") 切换语言
     n-divider
 </template>
 <script  setup>
 import { useAppStore } from '../stores/theme'
+// import { useI18n } from '../stores/i18n'
 import { darkTheme } from 'naive-ui';
+import { useI18n } from 'vue-i18n'
 const appStore = useAppStore()
 console.log(appStore);
 const active = ref(true)
@@ -24,4 +32,17 @@ const handleSwitch = (value) => {
         appStore.setTheme(darkTheme)
     }
 }
+
+const {locale} = useI18n()
+// const languageOptions = [
+// { label: '中文', key: 'zh', icon: renderIcon('zh') },
+// { label: 'English', key: 'en', icon: renderIcon('en') }
+// ]
+// 处理选中语言
+const changeLanguage = ()=>{
+    locale.value = locale.value === 'zh-CN' ? 'en' : 'zh-CN'
+    console.log(locale.value);
+}
+
+
 </script>

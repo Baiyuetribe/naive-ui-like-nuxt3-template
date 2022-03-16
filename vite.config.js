@@ -17,7 +17,9 @@ import Layouts from 'vite-plugin-vue-layouts' // 依赖插件
 
 import Inspect from 'vite-plugin-inspect'
 // import I18n from '@intlify/vite-plugin-vue-i18n'
-// import vueI18n from '@intlify/vite-plugin-vue-i18n' // *
+import path from 'path' // 
+import vueI18n from '@intlify/vite-plugin-vue-i18n' // *
+
 // import { resolve } from 'path'
 
 // 全局样式自动引入
@@ -63,12 +65,14 @@ export default defineConfig({
 
   Inspect(),
 
-    // i18n 国际化支持 **
-    // I18n({
-    //   runtimeOnly: true,
-    //   compositionOnly: true,
-    //   include: [resolve(__dirname, './locales/**')]
-    // }),
+  // i18n 国际化支持 **
+  vueI18n({
+    defaultSFCLang: 'yaml',
+    globalSFCScope: true, // 全局使用
+    // runtimeOnly: true,
+    // compositionOnly: true,
+    include: path.resolve(__dirname, './locales/**'),
+  }),
   ],
   // vue.config.js选项
   pages: {

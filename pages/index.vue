@@ -7,11 +7,10 @@ div
                 n-button(type="primary") 按钮
                 n-button(type="warning") 按钮
                 h1 {{ state.data }}
+                h1 {{ t("demo") }}
 </template>
 
 <script setup>
-import { darkTheme, } from "naive-ui"
-// const theme = computed(() => GlobalTheme.value === 'darkTheme' ? darkTheme : null)
 // const { t, locale } = useI18n()
 
 import { useCounterStore } from "../stores/counterStore"    // 手动引入
@@ -25,7 +24,7 @@ const state = reactive({
     data: '4545'
 });
 
-// const { t, locale } = useI18n()
+const { t } = useI18n()
 // const { isDark, toggleDark } = useDarks()
 
 // const toggleLocale = () => {
@@ -35,8 +34,6 @@ const state = reactive({
 
 // const language = computed(() => locale.value === 'zh-CN' ? '中文' : 'English')
 
-// const theme = computed(() => isDark.value ? 'dark' : 'light')
-
 
 
 const aa = ref(1);
@@ -45,3 +42,10 @@ const aa = ref(1);
 <style lang="stylus" scoped>
 
 </style>
+
+<i18n lang="yaml">  
+en:
+    demo: demo
+zh-CN:
+    demo: 演示
+</i18n>
